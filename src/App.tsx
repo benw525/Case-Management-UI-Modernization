@@ -15,7 +15,10 @@ import { ReportsPage } from './components/ReportsPage';
 import { HelpCenterModal } from './components/HelpCenterModal';
 import { SettingsModal } from './components/SettingsModal';
 import { ThemeProvider } from './components/ThemeContext';
+import { AdvocateAIButton } from './components/AdvocateAIButton';
+import { LoginPage } from './components/LoginPage';
 export function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeView, setActiveView] = useState<
     'dashboard' |
     'cases' |
@@ -32,6 +35,13 @@ export function App() {
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  if (!isAuthenticated) {
+    return (
+      <ThemeProvider>
+        <LoginPage onLogin={() => setIsAuthenticated(true)} />
+      </ThemeProvider>);
+
+  }
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex">
@@ -76,6 +86,8 @@ export function App() {
           isOpen={isSettingsOpen}
           onClose={() => setIsSettingsOpen(false)} />
 
+
+        <AdvocateAIButton />
       </div>
     </ThemeProvider>);
 
