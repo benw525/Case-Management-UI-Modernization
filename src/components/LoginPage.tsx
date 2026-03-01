@@ -16,14 +16,11 @@ export function LoginPage({ onLogin }: LoginPageProps) {
       <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-10">
         {/* Logo Section */}
         <div className="flex flex-col items-center mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center text-slate-950 font-bold text-2xl">
-              M
-            </div>
-            <span className="font-bold text-xl tracking-wide text-slate-900 dark:text-white">
-              MATTRMINDR
-            </span>
-          </div>
+          <img
+            src="/ChatGPT_Image_Feb_24,_2026_at_04_06_15_PM.png"
+            alt="MattrMindr"
+            className="h-12 object-contain mb-3 mix-blend-multiply dark:mix-blend-lighten dark:invert" />
+
           <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider text-center mb-1">
             MOBILE COUNTY PUBLIC DEFENDER'S OFFICE
           </div>

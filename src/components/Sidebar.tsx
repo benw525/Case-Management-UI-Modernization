@@ -112,9 +112,11 @@ export function Sidebar({
       {/* Logo Area */}
       <div className="p-6 border-b border-slate-800/50">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-8 h-8 bg-amber-500 rounded flex items-center justify-center text-slate-950 font-bold text-xl">
-            M
-          </div>
+          <img
+            src="/ChatGPT_Image_Feb_24,_2026_at_04_08_17_PM.png"
+            alt="MattrMindr logo"
+            className="w-8 h-8 rounded object-cover mix-blend-lighten" />
+
           <span className="font-bold text-lg tracking-wide text-white">
             MATTRMINDR
           </span>
