@@ -18,7 +18,7 @@ import { ThemeProvider } from './components/ThemeContext';
 import { AdvocateAIButton } from './components/AdvocateAIButton';
 import { LoginPage } from './components/LoginPage';
 export function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [activeView, setActiveView] = useState<
     'dashboard' |
     'cases' |

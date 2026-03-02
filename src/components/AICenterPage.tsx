@@ -1,5 +1,19 @@
 import React, { useState, memo } from 'react';
-import { Check, Edit2, X } from 'lucide-react';
+import {
+  Check,
+  Edit2,
+  X,
+  AlertTriangle,
+  Scale,
+  Brain,
+  CalendarClock,
+  PenLine,
+  MessageSquare,
+  FileSearch,
+  ListChecks,
+  FolderOpen,
+  Layers } from
+'lucide-react';
 export function AICenterPage() {
   const [activeMainTab, setActiveMainTab] = useState('AI Agents');
   const [activeSubTab, setActiveSubTab] = useState('My Training');
@@ -18,13 +32,23 @@ export function AICenterPage() {
       <div className="max-w-5xl mx-auto">
         {/* Main Tabs */}
         <div className="border-b border-slate-200 dark:border-slate-700 flex gap-8 mb-6">
-          {['AI Agents', '🧠 Advocate AI Trainer'].map((tab) =>
+          {[
+          {
+            id: 'AI Agents',
+            label: 'AI Agents'
+          },
+          {
+            id: 'Trainer',
+            label: 'Advocate AI Trainer'
+          }].
+          map((tab) =>
           <button
-            key={tab}
-            onClick={() => setActiveMainTab(tab)}
-            className={`py-3 text-sm font-medium border-b-2 transition-colors ${activeMainTab === tab ? 'border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600'}`}>
+            key={tab.id}
+            onClick={() => setActiveMainTab(tab.id)}
+            className={`py-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${activeMainTab === tab.id ? 'border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400' : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600'}`}>
 
-              {tab}
+              {tab.id === 'Trainer' && <Brain className="w-4 h-4" />}
+              {tab.label}
             </button>
           )}
         </div>
@@ -33,61 +57,81 @@ export function AICenterPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
           {
-            icon: '🚨',
+            Icon: AlertTriangle,
+            color: 'text-red-600 dark:text-red-400',
+            bg: 'bg-red-50 dark:bg-red-900/20',
             title: 'Case Triage',
             description:
             'Rank active cases by urgency — death penalty, trial dates, custody status, overdue tasks.'
           },
           {
-            icon: '⚖️',
+            Icon: Scale,
+            color: 'text-indigo-600 dark:text-indigo-400',
+            bg: 'bg-indigo-50 dark:bg-indigo-900/20',
             title: 'Charge Analysis',
             description:
             'Analyze charges under Alabama Code — sentencing ranges, mandatory minimums, diversion eligibility.'
           },
           {
-            icon: '🧠',
+            Icon: Brain,
+            color: 'text-violet-600 dark:text-violet-400',
+            bg: 'bg-violet-50 dark:bg-violet-900/20',
             title: 'Case Strategy',
             description:
             'Full defense strategy analysis — motions, plea negotiations, sentencing exposure, investigation priorities.'
           },
           {
-            icon: '📅',
+            Icon: CalendarClock,
+            color: 'text-amber-600 dark:text-amber-400',
+            bg: 'bg-amber-50 dark:bg-amber-900/20',
             title: 'Deadline Generator',
             description:
             'Generate procedural deadlines based on Alabama Rules of Criminal Procedure and case stage.'
           },
           {
-            icon: '📝',
+            Icon: PenLine,
+            color: 'text-blue-600 dark:text-blue-400',
+            bg: 'bg-blue-50 dark:bg-blue-900/20',
             title: 'Document Drafting',
             description:
             'Generate first drafts of motions, pleas, and memoranda tailored to your case.'
           },
           {
-            icon: '💬',
+            Icon: MessageSquare,
+            color: 'text-emerald-600 dark:text-emerald-400',
+            bg: 'bg-emerald-50 dark:bg-emerald-900/20',
             title: 'Client Communication',
             description:
             'Plain-language case status update suitable for sharing with clients and families.'
           },
           {
-            icon: '📋',
+            Icon: FileSearch,
+            color: 'text-cyan-600 dark:text-cyan-400',
+            bg: 'bg-cyan-50 dark:bg-cyan-900/20',
             title: 'Document Summary',
             description:
             'Summarize police reports, witness statements, lab reports, and other case documents for defense-relevant details.'
           },
           {
-            icon: '✅',
+            Icon: ListChecks,
+            color: 'text-teal-600 dark:text-teal-400',
+            bg: 'bg-teal-50 dark:bg-teal-900/20',
             title: 'Task Suggestions',
             description:
             'Suggest concrete defense tasks based on case stage, charges, deadlines, and existing work — one-click to add.'
           },
           {
-            icon: '📁',
+            Icon: FolderOpen,
+            color: 'text-orange-600 dark:text-orange-400',
+            bg: 'bg-orange-50 dark:bg-orange-900/20',
             title: 'Filing Classifier',
             description:
             'Classify court filings — auto-name, identify filing party (State, Defendant, Court), and summarize significance.'
           },
           {
-            icon: '🔄',
+            Icon: Layers,
+            color: 'text-slate-600 dark:text-slate-400',
+            bg: 'bg-slate-100 dark:bg-slate-700/50',
             title: 'Batch Case Manager',
             description:
             'Perform bulk operations — reassign staff, change statuses, advance stages, update court dates, transfer divisions.',
@@ -98,7 +142,11 @@ export function AICenterPage() {
             key={i}
             className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm flex flex-col h-full cursor-pointer hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-colors">
 
-                <div className="text-2xl mb-3">{agent.icon}</div>
+                <div
+              className={`w-9 h-9 rounded-lg ${agent.bg} flex items-center justify-center mb-3`}>
+
+                  <agent.Icon className={`w-5 h-5 ${agent.color}`} />
+                </div>
                 <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 mb-2">
                   {agent.title}
                 </h3>
@@ -115,7 +163,7 @@ export function AICenterPage() {
           </div>
         }
 
-        {activeMainTab === '🧠 Advocate AI Trainer' &&
+        {activeMainTab === 'Trainer' &&
         <>
             {/* Description */}
             <p className="text-sm text-slate-600 dark:text-slate-400 mb-8 max-w-3xl leading-relaxed">
